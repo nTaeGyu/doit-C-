@@ -1,0 +1,24 @@
+#include <iostream>
+#include <vector>    //배열의 크기를 동적으로 조절 
+#include <algorithm>  //다양한 알고리즘 함수. ,객체 포함시킨 헤더파일
+#include <numeric>   //숫자 계산과 관련된 함수들 제공
+
+
+using namespace std;  //std 선언 구문. std는 다양한 기능이 있음 
+
+int main() {
+	int N;
+	cin >> N;
+	vector<int> vec(N);   //벡터가 정수형을 저장한다는것을 지정
+
+	for (int i = 0; i < N; i++) {   //입력을 받고 vec벡터에 요소를 하나씩 할당하는 반복문
+		cin >> vec[i];
+	}
+
+	int M = *max_element(vec.begin(), vec.end());  //vec 벡터에서 최댓값 찾고 평균값 계산한 후 최댓값 나눈 값 출력
+	// max_element 함수로 최댓값 찾음. 
+	float before_avg = (accumulate(vec.begin(), vec.end(), 0) / (float)N);  //accumulate 함수로 vec벡터 모든 요소 합 구한 후  N으로 나눠 평균값 구함. 
+	// 나눠진 값으로 (float)N)을 사용하여 실수 나눗셈이 이뤄지게 많듦. 
+	cout << before_avg * 100 / M;
+
+}
