@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int n;    //입력 갯수
+	int sum = 0;
+
+	cin >> n;   //데이터 출력
+
+	char * str = new char[n + 1]; 
+	cin >> str;
+
+	for (int i = 0; i < n; i++)
+	{
+		sum += str[i] - '0';  //0문자 빼기. 아스키문자로 0이 숫자48. 
+	}
+	cout << sum << endl;
+
+		return 0;
+	}
