@@ -1,0 +1,12 @@
+//부분 합 0~k
+//구간 합 a~b
+// Prefix Sum이라는 알고리즘
+//https://www.crocus.co.kr/843
+//세그 먼트 트리 https://yabmoons.tistory.com/431
+
+#include<iostream>
+#include<vector>
+
+using namespace std;
+
+int main() {
