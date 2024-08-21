@@ -1,0 +1,34 @@
+#include<iostream>
+#include<vector>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);   //입출력 속도를 높임
+	cin.tie(NULL);   //cin과 cout 묶여 동기화 되는 것 해제. 입출력 버퍼가 많지만 빠르게 입출력 할 수 있음.
+	cout.tie(NULL);  //출력 버퍼를 비우는 것을 해제. 출력 속도가 향상
+
+
+	int N, M;
+	cin >> N >> M;
+
+	vector<int> acc_sum(N + 1, 0); // 누적합
+	cin >> acc_sum[1];
+	for (int i = 2; i < N + 1; i++) {
+		int num;
+		cin >> num;
+		acc_sum[i] = acc_sum[i - 1] + num;
+	}
+
+	//for (int i = 0; i < N; i++) {
+	//	cout << acc_sum[i] << " ";
+	//}
+
+	for (int i = 0; i < M; i++) {
+		int start, end;
+		cin >> start >> end;
+		cout << acc_sum[end] - acc_sum[start - 1] << "\n";  //누적의 합 
+	}
+
+
+}
