@@ -1,0 +1,51 @@
+구간의 합 정의 
+-배열의 특정 구간의 합 구하는데 응용되는 방식
+1브루트 포스 2 함수를 사용하여 처리하는 방식 두가지로 나뉨
+전자는 적은 배열이나 특정 구간 처리할때 편리함 
+후자는 prefixSumArray 함수 rangeSum함수응용하여 합을 계산. 
+여러 구간의 합 반복적 구할때는 후자의 방법을 많이 사용한다. 
+-----후자의 예시
+
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+// 구간 합 배열 생성 함수
+vector<int> prefixSumArray(const vector<int>& A) {
+    int n = A.size();
+    vector<int> S(n, 0);
+    S[0] = A[0];
+    
+    for (int i = 1; i < n; i++) {
+        S[i] = S[i - 1] + A[i];
+    }
+    
+    return S;
+}
+
+// 주어진 구간 [i, j]의 합을 구하는 함수
+int rangeSum(const vector<int>& S, int i, int j) {
+    if (i == 0) return S[j];
+    else return S[j] - S[i - 1];
+}
+
+int main() {
+    vector<int> A = {1, 2, 3, 4, 5}; // 예제 배열
+    vector<int> S = prefixSumArray(A); // 구간 합 배열 생성
+    
+    int i = 1, j = 3; // 구간 [1, 3]의 합을 구함
+    cout << "Sum of range [" << i << ", " << j << "] = " << rangeSum(S, i, j) << endl;
+
+    return 0;
+}
+
+prefixSumArray 함수는 배열 A의 구간 합 배열 S를 생성합니다. 이 배열을 사용하면 특정 구간 [i, j]의 합을 S[j] - S[i-1]로 빠르게 계산할 수 있습니다.
+rangeSum 함수는 구간 합 배열을 사용하여 주어진 구간 [i, j]의 합을 계산합니다.
+
+
+**
+
+
+
+
